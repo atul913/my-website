@@ -25,755 +25,752 @@
             color: #000;
         }
 
-/*
+        /*
 ================================
 1. Root Variables & Global Styles
 ================================
 */
-:root {
-    --primary-color: #00bcd4;
-    /* A cool cyan for accents/glow */
-    --secondary-color: #9c27b0;
-    /* A vibrant purple for secondary accents */
-    --background-dark: #121212;
-    /* Deep dark background */
-    --text-light: #f5f5f5;
-    /* Light text */
-    --card-bg: #1e1e1e;
-    /* Slightly lighter dark for cards */
-}
+        :root {
+            --primary-color: #00bcd4;
+            /* A cool cyan for accents/glow */
+            --secondary-color: #9c27b0;
+            /* A vibrant purple for secondary accents */
+            --background-dark: #121212;
+            /* Deep dark background */
+            --text-light: #f5f5f5;
+            /* Light text */
+            --card-bg: #1e1e1e;
+            /* Slightly lighter dark for cards */
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    /* Smooth transitions for all elements for better animation */
-    transition: all 0.3s ease-in-out;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            /* Smooth transitions for all elements for better animation */
+            transition: all 0.3s ease-in-out;
+        }
 
-body {
-    background-color: var(--background-dark);
-    color: var(--text-light);
-    font-family: 'Poppins', sans-serif;
-    /* Subtle background animation */
-    background-image: radial-gradient(circle at top left, rgba(0, 188, 212, 0.05), transparent 50%),
-        radial-gradient(circle at bottom right, rgba(156, 39, 176, 0.05), transparent 50%);
-    background-size: 100% 100%;
-}
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            /* Subtle background animation */
+            background-image: radial-gradient(circle at top left, rgba(0, 188, 212, 0.05), transparent 50%),
+                radial-gradient(circle at bottom right, rgba(156, 39, 176, 0.05), transparent 50%);
+            background-size: 100% 100%;
+        }
 
-/* --- Utility Classes --- */
-.title h1 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: var(--primary-color);
-    border-bottom: 3px solid var(--secondary-color);
-    display: inline-block;
-    padding-bottom: 5px;
-}
+        /* --- Utility Classes --- */
+        .title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
 
-/*
-================================
-2. Header & Navigation
-================================
-*/
-#navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(18, 18, 18, 0.95);
-    /* Semi-transparent dark background */
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-.logo-text {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-light);
-    /* Neon Glow Effect */
-    text-shadow: 0 0 5px var(--primary-color),
-        0 0 10px var(--primary-color);
-}
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            /* Neon Glow Effect */
+            text-shadow: 0 0 5px var(--primary-color),
+                0 0 10px var(--primary-color);
+        }
 
-.nav_list {
-    list-style: none;
-    display: flex;
-    gap: 2.5rem;
-}
+        .nav_list {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
 
-.nav_list a {
-    text-decoration: none;
-    color: var(--text-light);
-    font-weight: 500;
-    position: relative;
-    padding-bottom: 5px;
-}
+        .nav_list a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+        }
 
-.nav_list a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    left: 0;
-    bottom: 0;
-    transition: width 0.3s;
-}
+        .nav_list a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s;
+        }
 
-.nav_list a:hover::after {
-    width: 100%;
-}
+        .nav_list a:hover::after {
+            width: 100%;
+        }
 
-/* --- Buttons --- */
-.btn,
-.contact-btn {
-    padding: 10px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        /* --- Buttons --- */
+        .btn,
+        .contact-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-.primary-btn {
-    background-color: var(--primary-color);
-    color: var(--background-dark);
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
-}
+        .primary-btn {
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+        }
 
-.primary-btn:hover {
-    background-color: transparent;
-    color: var(--primary-color);
-    box-shadow: 0 0 25px var(--primary-color);
-    transform: translateY(-5px);
-}
+        .primary-btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            box-shadow: 0 0 25px var(--primary-color);
+            transform: translateY(-5px);
+        }
 
-.secondary-btn {
-    background-color: transparent;
-    color: var(--text-light);
-    border: 2px solid var(--secondary-color);
-}
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--secondary-color);
+        }
 
-.secondary-btn:hover {
-    background-color: var(--secondary-color);
-    color: var(--text-light);
-    box-shadow: 0 0 25px var(--secondary-color);
-    transform: translateY(-5px);
-}
+        .secondary-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            box-shadow: 0 0 25px var(--secondary-color);
+            transform: translateY(-5px);
+        }
 
-.contact-btn {
-    padding: 8px 18px;
-    background-color: var(--secondary-color);
-    color: var(--text-light);
-    border: none;
-    border-radius: 50px;
-}
+        .contact-btn {
+            padding: 8px 18px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50px;
+        }
 
-.contact-btn:hover {
-    box-shadow: 0 0 15px var(--secondary-color);
-}
+        .contact-btn:hover {
+            box-shadow: 0 0 15px var(--secondary-color);
+        }
 
-/*
+        /*
 ================================
 3. Home Section
 ================================
 */
-.home {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    /* FIX: Center content horizontally */
-    justify-content: center;
-    padding: 0 5%;
-    /* FIX: Change text alignment to center for name and top line */
-    text-align: center;
-}
 
-.home .left {
-    max-width: 700px;
-    /* Increased max width slightly */
-    /* Center the block element */
-    margin: 0 auto;
-}
+        /* Centering the Hero Content */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 60px 60px;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
 
-.home #top {
-    font-size: 1.2rem;
-    color: var(--text-light);
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            filter: blur(40px);
+            z-index: 0;
+        }
 
-.home .name-glow {
-    font-size: 5rem;
-    /* Slightly larger name */
-    font-weight: 700;
-    margin: 10px 0 5px;
-    /* Increased bottom margin */
-    color: var(--text-light);
-    /* Stronger Name Glow */
-    text-shadow:
-        0 0 7px var(--primary-color),
-        0 0 15px var(--primary-color),
-        0 0 30px var(--primary-color);
-    animation: pulseGlow 5s infinite alternate;
-}
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease-out;
+        }
 
-/* FIX: Styling for the typing line container */
-.intro-typing-line {
-    /* Set to inline-block to allow margin auto, but center the content */
-    display: inline-block;
-    text-align: center;
-    margin: 5px 0 20px;
-    /* Increased margin below the typing line */
-}
+        /* The Big Title */
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
 
-/* FIX: Styled #element-1 to look integrated */
-.home #element-1 {
-    font-size: 2.4rem;
-    /* Large font size for the role */
-    color: var(--secondary-color);
-    /* Using purple for the dynamic text */
-    font-weight: 600;
-    margin-left: 10px;
-}
+        /* Gradient effect for the Name */
+        .gradient-name {
+            /* Uses the same base color as your background for harmony */
+            background: linear-gradient(to left,
+                    #06b6d4 20%,
+                    /* Base Cyan matching your background */
+                    #22d3ee 50%,
+                    /* Brighter Cyan for "lighting" effect */
+                    #ffffff 80%
+                    /* Soft white tip for a 'shine' look */
+                );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
 
-.home .buttons {
-    /* FIX: Center the button container */
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
+            /* Subtle glow to make it pop against the dark background */
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 
-/* Remove or comment out the .home .right block in CSS */
-.home .right {
-    display: none;
-    /* Hiding the placeholder graphic entirely for this centered layout */
-}
+            font-weight: 800;
+            /* Heavier weight makes gradients look better */
+        }
 
-/* --- Button Styling for contrast look --- */
-.primary-btn {
-    /* ... (unchanged: cyan background, dark text) ... */
-    background-color: var(--primary-color);
-    color: var(--background-dark);
-}
+        /* Sub-header (Problem Solver) */
+        .typing-container {
+            font-size: 2rem;
+            color: #e0e0e0;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
 
-.secondary-btn {
-    /* Updated to match the requested look: border and text color from secondary color */
-    background-color: transparent;
-    color: var(--secondary-color);
-    border: 2px solid var(--secondary-color);
-    box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
-    /* Subtle purple glow */
-}
+        /* Description Text */
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            font-family: 'Ubuntu', sans-serif;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.secondary-btn:hover {
-    background-color: var(--secondary-color);
-    color: var(--text-light);
-    box-shadow: 0 0 25px var(--secondary-color);
-}
+        /* GitHub Pill Button Style */
+        .github-pill-btn {
+            background-color: transparent;
+            color: #00bcd4;
+            border: 1.5px solid #00bcd4;
+            padding: 12px 30px;
+            border-radius: 8px;
+            /* Slightly rounded as per image */
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .github-pill-btn:hover {
+            background-color: rgba(0, 188, 212, 0.1);
+            box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .typing-container {
+                font-size: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+        }
 
 
-/* --- Media Query Update --- */
-@media (max-width: 900px) {
-
-    /* Ensure center alignment on mobile */
-    .home {
-        text-align: center;
-    }
-
-    .home .buttons {
-        /* Keep column layout for buttons on mobile */
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .home .name-glow {
-        font-size: 4rem;
-    }
-
-    .home #element-1 {
-        font-size: 2rem;
-    }
-
-    .intro-typing-line {
-        display: block;
-        /* Allow wrapping on small screens */
-    }
-}
-
-/*
+        /*
 ================================
 4. About Section
 ================================
 */
-.about {
-    padding: 100px 5%;
-    background-color: var(--card-bg);
-    /* Contrast background */
-}
+        .about {
+            padding: 100px 5%;
+            background-color: var(--card-bg);
+            /* Contrast background */
+        }
 
-.about-down {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    text-align: left;
-}
+        .about-down {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+        }
 
-.about-left img {
-    max-width: 350px;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
-    transition: transform 0.5s;
-}
+        .about-left img {
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 188, 212, 0.4);
+            transition: transform 0.5s;
+        }
 
-.about-left img:hover {
-    transform: scale(1.05);
-}
+        .about-left img:hover {
+            transform: scale(1.05);
+        }
 
-.about-right h6 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
+        .about-right h6 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
 
-.about-right p {
-    line-height: 1.8;
-}
+        .about-right p {
+            line-height: 1.8;
+        }
 
-/*
+        /*
 ================================
 5. Education Section (New)
 ================================
 */
-.education {
-    padding: 100px 5%;
-}
+        .education {
+            padding: 100px 5%;
+        }
 
-.timeline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin-top: 50px;
-}
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
 
-.timeline-item {
-    background-color: var(--card-bg);
-    border-left: 5px solid var(--secondary-color);
-    padding: 20px 30px;
-    border-radius: 8px;
-    text-align: left;
-    max-width: 800px;
-    width: 100%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, border-color 0.3s;
-}
+        .timeline-item {
+            background-color: var(--card-bg);
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px 30px;
+            border-radius: 8px;
+            text-align: left;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
 
-.timeline-item:hover {
-    transform: translateY(-5px);
-    border-left-color: var(--primary-color);
-}
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--primary-color);
+        }
 
-.timeline-item h3 {
-    color: var(--primary-color);
-    margin-bottom: 5px;
-}
+        .timeline-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
 
-.timeline-item p {
-    margin-top: 5px;
-    font-size: 0.95rem;
-}
+        .timeline-item p {
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
 
-/*
+        /*
 ================================
 6. Skills Section
 ================================
 */
-.skills {
-    padding: 100px 5%;
-    background-color: var(--card-bg);
-}
+        .skills {
+            padding: 100px 5%;
+            background-color: var(--card-bg);
+        }
 
-.skills-down {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    margin-top: 50px;
-}
+        .skills-down {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            margin-top: 50px;
+        }
 
-.skills-left {
-    flex: 1;
-    max-width: 500px;
-    text-align: left;
-}
+        .skills-left {
+            flex: 1;
+            max-width: 500px;
+            text-align: left;
+        }
 
-.skills-left h6 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
+        .skills-left h6 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
 
-.skills-left h6 span {
-    color: var(--primary-color);
-}
+        .skills-left h6 span {
+            color: var(--primary-color);
+        }
 
-.skills-right {
-    flex: 1;
-    max-width: 500px;
-}
+        .skills-right {
+            flex: 1;
+            max-width: 500px;
+        }
 
-.skill-item {
-    margin-bottom: 20px;
-    text-align: left;
-}
+        .skill-item {
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-.skill-bar {
-    background-color: #333;
-    height: 15px;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 5px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
-}
+        .skill-bar {
+            background-color: #333;
+            height: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 5px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
 
-.skill-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-    border-radius: 8px;
-    width: 0;
-    /* Animation definition for loading effect */
-    animation: skillLoad 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    box-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
-    /* Glow on skill bar */
-}
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            border-radius: 8px;
+            width: 0;
+            /* Animation definition for loading effect */
+            animation: skillLoad 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
+            /* Glow on skill bar */
+        }
 
-/* Specific skill widths and delays (These work without complex JS if you trigger the animation class on load) */
-.c-skill {
-    width: 70%;
-    animation-delay: 0.1s;
-}
+        /* Specific skill widths and delays (These work without complex JS if you trigger the animation class on load) */
+        .c-skill {
+            width: 70%;
+            animation-delay: 0.1s;
+        }
 
-.cpp-skill {
-    width: 80%;
-    animation-delay: 0.2s;
-}
+        .cpp-skill {
+            width: 80%;
+            animation-delay: 0.2s;
+        }
 
-.java-skill {
-    width: 50%;
-    animation-delay: 0.3s;
-}
+        .java-skill {
+            width: 50%;
+            animation-delay: 0.3s;
+        }
 
-.html-css-skill {
-    width: 60%;
-    animation-delay: 0.4s;
-}
+        .html-css-skill {
+            width: 60%;
+            animation-delay: 0.4s;
+        }
 
-@keyframes skillLoad {
-    0% {
-        width: 0;
-    }
+        @keyframes skillLoad {
+            0% {
+                width: 0;
+            }
 
-    100% {
-        /* The specific skill class sets the final width */
-    }
-}
+            100% {
+                /* The specific skill class sets the final width */
+            }
+        }
 
-/*
+        /*
 ================================
 7. Projects & Certifications
 ================================
 */
-.projects {
-    padding: 100px 5%;
-}
+        .projects {
+            padding: 100px 5%;
+        }
 
-.project-container,
-.certifications-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-    text-align: center;
-}
+        .project-container,
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
 
-.certifications {
-    padding: 100px 5%;
-}
+        .certifications {
+            padding: 100px 5%;
+        }
 
-.project-card,
-.cert-card {
-    background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(156, 39, 176, 0.2);
-    /* Hover Animation: Lift and subtle glow */
-    transition: all 0.4s ease;
-}
+        .project-card,
+        .cert-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(156, 39, 176, 0.2);
+            /* Hover Animation: Lift and subtle glow */
+            transition: all 0.4s ease;
+        }
 
-.project-card:hover,
-.cert-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.5);
-    border: 1px solid var(--primary-color);
-}
+        .project-card:hover,
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.5);
+            border: 1px solid var(--primary-color);
+        }
 
-.project-card h2,
-.cert-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
+        .project-card h2,
+        .cert-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
 
-.project-description {
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-    color: #bbb;
-}
+        .project-description {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
 
-.project-link,
-.cert-link {
-    display: inline-block;
-    margin: 15px 10px 0 0;
-    padding: 8px 15px;
-    background-color: var(--secondary-color);
-    color: var(--text-light);
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
+        .project-link,
+        .cert-link {
+            display: inline-block;
+            margin: 15px 10px 0 0;
+            padding: 8px 15px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
 
-.project-link:hover,
-.cert-link:hover {
-    background-color: var(--primary-color);
-    box-shadow: 0 0 10px var(--primary-color);
-    color: var(--background-dark);
-}
+        .project-link:hover,
+        .cert-link:hover {
+            background-color: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
+            color: var(--background-dark);
+        }
 
-.project-link i,
-.cert-link i {
-    margin-right: 8px;
-}
+        .project-link i,
+        .cert-link i {
+            margin-right: 8px;
+        }
 
-#clock {
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    background-color: #0d0d0d;
-}
+        #clock {
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            background-color: #0d0d0d;
+        }
 
-/*
+        /*
 ================================
 8. Contact Section (Updated for Font Awesome)
 ================================
 */
-.contact {
-    padding: 100px 5%;
-    background-color: var(--card-bg);
-}
+        .contact {
+            padding: 100px 5%;
+            background-color: var(--card-bg);
+        }
 
-.contact-down {
-    max-width: 900px;
-    margin: 40px auto;
-    text-align: center;
-}
+        .contact-down {
+            max-width: 900px;
+            margin: 40px auto;
+            text-align: center;
+        }
 
-.contact-down>p {
-    margin-bottom: 40px;
-    line-height: 1.8;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-}
+        .contact-down>p {
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.contact-details {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 50px;
-}
+        .contact-details {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
 
-.contact-details>div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #242424;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-    min-width: 200px;
-}
+        .contact-details>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #242424;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 200px;
+        }
 
-.contact-details>div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px var(--primary-color);
-}
+        .contact-details>div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
 
-/* Styling for the Font Awesome icon in detail cards */
-.contact-details i {
-    font-size: 2.2rem;
-    width: 40px;
-    height: 40px;
-    color: var(--primary-color);
-    /* Use primary color for icons */
-    text-shadow: 0 0 8px rgba(0, 188, 212, 0.7);
-    transition: text-shadow 0.3s;
-}
+        /* Styling for the Font Awesome icon in detail cards */
+        .contact-details i {
+            font-size: 2.2rem;
+            width: 40px;
+            height: 40px;
+            color: var(--primary-color);
+            /* Use primary color for icons */
+            text-shadow: 0 0 8px rgba(0, 188, 212, 0.7);
+            transition: text-shadow 0.3s;
+        }
 
-.contact-details>div:hover i {
-    text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
-}
+        .contact-details>div:hover i {
+            text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+        }
 
-.contact-details span {
-    display: block;
-    font-weight: 700;
-    color: var(--text-light);
-    font-size: 1.1rem;
-}
+        .contact-details span {
+            display: block;
+            font-weight: 700;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
 
-.contact-details a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
 
-.contact-details a:hover {
-    color: var(--secondary-color);
-}
+        .contact-details a:hover {
+            color: var(--secondary-color);
+        }
 
-.social-handles {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
+        .social-handles {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
 
-.social-handles a {
-    text-decoration: none;
-}
+        .social-handles a {
+            text-decoration: none;
+        }
 
-.social-handles .icons {
-    width: 50px;
-    height: 50px;
-    background-color: var(--secondary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-}
+        .social-handles .icons {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
 
-.social-handles .icons:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 20px var(--secondary-color);
-    background-color: var(--primary-color);
-}
+        .social-handles .icons:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px var(--secondary-color);
+            background-color: var(--primary-color);
+        }
 
-.social-handles .icons i {
-    font-size: 24px;
-    color: var(--text-light);
-    /* Make the icon white/light */
-}
+        .social-handles .icons i {
+            font-size: 24px;
+            color: var(--text-light);
+            /* Make the icon white/light */
+        }
 
-/*
+        /*
 ================================
 9. Footer
 ================================
 */
-footer {
-    padding: 20px;
-    text-align: center;
-    font-size: 0.9rem;
-    background-color: #0a0a0a;
-}
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            background-color: #0a0a0a;
+        }
 
-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
 
-/*
+        /*
 ================================
 10. Media Queries (Responsiveness)
 ================================
 */
-@media (max-width: 900px) {
-    .home {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 150px;
-        min-height: auto;
-    }
+        @media (max-width: 900px) {
+            .home {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 150px;
+                min-height: auto;
+            }
 
-    .home .left {
-        max-width: 100%;
-        margin-bottom: 50px;
-    }
+            .home .left {
+                max-width: 100%;
+                margin-bottom: 50px;
+            }
 
-    .home .right {
-        display: none;
-        /* Hide the decorative graphic on small screens */
-    }
+            .home .right {
+                display: none;
+                /* Hide the decorative graphic on small screens */
+            }
 
-    .home .buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+            .home .buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
 
-    .home .btn {
-        width: 80%;
-        margin-top: 10px;
-    }
+            .home .btn {
+                width: 80%;
+                margin-top: 10px;
+            }
 
-    .about-down,
-    .skills-down {
-        flex-direction: column;
-    }
+            .about-down,
+            .skills-down {
+                flex-direction: column;
+            }
 
-    .about-left img,
-    .skills-left,
-    .skills-right {
-        max-width: 100%;
-    }
+            .about-left img,
+            .skills-left,
+            .skills-right {
+                max-width: 100%;
+            }
 
-    .nav_list {
-        display: none;
-        /* Simple mobile hide for now, needs a hamburger menu in real use */
-    }
+            .nav_list {
+                display: none;
+                /* Simple mobile hide for now, needs a hamburger menu in real use */
+            }
 
-    #navbar {
-        justify-content: center;
-    }
+            #navbar {
+                justify-content: center;
+            }
 
-    .contact-btn {
-        display: none;
-    }
-}
+            .contact-btn {
+                display: none;
+            }
+        }
 
-@media (max-width: 500px) {
-    .home .name-glow {
-        font-size: 3rem;
-    }
+        @media (max-width: 500px) {
+            .home .name-glow {
+                font-size: 3rem;
+            }
 
-    .home #element-1 {
-        font-size: 2rem;
-    }
+            .home #element-1 {
+                font-size: 2rem;
+            }
 
-    .contact-details {
-        flex-direction: column;
-        align-items: stretch;
-        /* Stretch items to full width */
-    }
+            .contact-details {
+                flex-direction: column;
+                align-items: stretch;
+                /* Stretch items to full width */
+            }
 
-    .contact-details>div {
-        min-width: 100%;
-    }
-}
+            .contact-details>div {
+                min-width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -798,19 +795,24 @@ footer a {
     </header>
 
     <section class="home" id="Home">
-        <div class="left">
-            <span id="top">Hi, My Name is</span>
-            <div class="name name-glow">Atul Agrawal</div>
-            <span id="element-1" style="color: rgba(0, 136, 169, 1); font-weight: 500;"></span>
+        <div class="hero-content">
+            <h1 class="hero-title"><span class="gradient-name">Hi, I'm Atul Agrawal</span></h1>
 
-            <div class="buttons">
-                <button id="downloadButton" class="btn primary-btn">Download Resume</button>
-                <button class="btn secondary-btn" onclick="window.open('https://github.com/Newbie-coder91/');">Visit
-                    GitHub</button>
+            <div class="typing-container">
+                <span id="element-1"></span>
             </div>
-        </div>
-        <div class="right">
 
+            <p class="hero-description">
+                B.Tech student passionate about building robust backend systems with Java, DSA expertise,
+                and a drive to write scalable, clean code. Solved 300+ DSA problems and building
+                production-ready applications.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="github-pill-btn" onclick="window.open('https://github.com/atul913/');">
+                    <i class="fa-brands fa-github"></i> Visit GitHub
+                </button>
+            </div>
         </div>
     </section>
 
@@ -824,7 +826,7 @@ footer a {
                     <h6>I'm Atul Agrawal and I love <span id="element-2" style="color: rgb(100, 28, 163);"></span>
                     </h6>
                     <p>Hey There!<br><br>
-                        I’m Atul, a passionate second-year B.Tech student with a love for coding and web
+                        I’m Atul, a passionate Third-year B.Tech student with a love for coding and web
                         development. I thrive on creating clean, efficient, and user-friendly web applications while
                         continuously learning and exploring new technologies.<br><br>
 
@@ -850,17 +852,17 @@ footer a {
             <div class="timeline">
                 <div class="timeline-item">
                     <h3>B.Tech. in Computer Science (Ongoing)</h3>
-                    <p>**ABC University of Technology** | 2023 - Present</p>
+                    <p>Acropolis Institute of Technology And Research | 2023 - Present</p>
                     <p>Focus: Data Structures and Algorithms, Web Development, Object-Oriented Programming.</p>
                 </div>
                 <div class="timeline-item">
                     <h3>High School (12th Grade)</h3>
-                    <p>**XYZ Public School** | 2022</p>
+                    <p>Rajendra Pathak Memorial Higher Secondary School | 2022</p>
                     <p>Grade: 92%</p>
                 </div>
                 <div class="timeline-item">
                     <h3>Intermediate (10th Grade)</h3>
-                    <p>**XYZ Public School** | 2020</p>
+                    <p>Rajendra Pathak Memorial Higher Secondary School | 2020</p>
                     <p>Grade: 94%</p>
                 </div>
 
@@ -918,36 +920,29 @@ footer a {
                 <p class="project-description">An unusual digital clock visualization built using pure JavaScript Canvas
                     API, showcasing mathematical drawing and real-time updates.</p>
 
-                <a href="https://github.com/Newbie-coder91/cursed-clock-repo" target="_blank" class="project-link">
+                <a href="https://github.com/atul913/Number_Clock" target="_blank" class="project-link">
                     <i class="fa-brands fa-github"></i> View Code
                 </a>
             </div>
 
             <div class="project-card">
-                <h2>E-Commerce Landing Page</h2>
-                <p class="project-description">A responsive, modern landing page for a fictional e-commerce brand,
+                <h2>My SQL IDE</h2>
+                <p class="project-description">A responsive, modern Editor fro my SQL queries built with HTML, CSS, and
+                    JavaScript
                     focusing on clean UI/UX and mobile-first design.</p>
-                <a href="https://link-to-live-demo.com" target="_blank" class="project-link">
-                    <i class="fa-solid fa-globe"></i> View Demo
-                </a>
-                <a href="https://github.com/Newbie-coder91/ecommerce-landing" target="_blank" class="project-link">
+                <a href="https://github.com/atul913/MySQL-IDE" target="_blank" class="project-link">
                     <i class="fa-brands fa-github"></i> View Code
                 </a>
             </div>
 
             <div class="project-card">
-                <h2>DSA Visualizer</h2>
-                <p class="project-description">A Python/JavaScript tool to visualize common Data Structures and
-                    Algorithms (e.g., sorting, linked lists) to aid in learning and debugging.</p>
-                <a href="https://link-to-live-demo-2.com" target="_blank" class="project-link">
-                    <i class="fa-solid fa-globe"></i> View Demo
-                </a>
-                <a href="https://github.com/Newbie-coder91/dsa-visualizer" target="_blank" class="project-link">
+                <h2>Space Invader</h2>
+                <p class="project-description">A Python implementation of the classic Space Invaders game using Pygame.
+                </p>
+                <a href="https://github.com/atul913/Space_invader" target="_blank" class="project-link">
                     <i class="fa-brands fa-github"></i> View Code
                 </a>
 
-                <p style="font-style: italic; color: var(--secondary-color); margin-top: 10px;">(Visualization graphic
-                    placeholder)</p>
             </div>
         </div>
     </section>
@@ -996,7 +991,7 @@ footer a {
                     <div>
                         <i class="fa-solid fa-envelope"></i>
                         <span>Email Address</span>
-                        <a href="mailto:atulagrawal@example.com">atulagrawal@example.com</a>
+                        <a href="mailto:atulagrawal230707@acropolis.in">atulagrawal230707@acropolis.in</a>
                     </div>
 
                     <div>
@@ -1007,28 +1002,23 @@ footer a {
 
                     <div>
                         <i class="fa-solid fa-phone"></i>
-                        <span>Phone (Optional)</span>
-                        <a href="tel:+919876543210">+91 987-654-3210</a>
+                        <span>Phone</span>
+                        <a href="tel:+919876543210">+91 9131291691</a>
                     </div>
                 </div>
 
                 <div class="social-handles">
-                    <a href="https://linkedin.com/in/atulagrawal-profile" target="_blank">
+                    <a href="https://linkedin.com/in/atul91" target="_blank">
                         <div class="icons" style="background-color: #0A66C2;">
                             <i class="fa-brands fa-linkedin-in"></i>
                         </div>
                     </a>
-                    <a href="https://github.com/Newbie-coder91" target="_blank">
+                    <a href="https://github.com/atul913" target="_blank">
                         <div class="icons" style="background-color: #181717;">
                             <i class="fa-brands fa-github"></i>
                         </div>
                     </a>
-                    <a href="https://twitter.com/atul_agrawal_x" target="_blank">
-                        <div class="icons" style="background-color: #1DA1F2;">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </div>
-                    </a>
-                    <a href="https://instagram.com/atul_agrawal_ig" target="_blank">
+                    <a href="https://www.instagram.com/atul_agrawal.18/" target="_blank">
                         <div class="icons"
                             style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888, #5851db);">
                             <i class="fa-brands fa-instagram"></i>
@@ -1045,34 +1035,31 @@ footer a {
     </section>
 
     <footer>
-        <span id="credit">Created By <a href="index.html">Newbie-coder91</a> | <span>&#169</span> 2024 All rights
+        <span id="credit">Created By <a href="https://github.com/atul913">Atul Agrawal</a> | <span>&#169</span> 2024 All
+            rights
             reserved.</span>
     </footer>
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
         var typed1 = new Typed('#element-1', {
-            strings: ['Gamer', 'Tech Enthusiast', 'Web Developer', 'Programmer'],
-            typeSpeed: 100,
-            backSpeed: 60,
+            strings: ['Problem Solver', 'Web Developer', 'Software Engineer', 'Tech Enthusiast'],
+            typeSpeed: 60,
+            backSpeed: 40,
+            backDelay: 1500,
             loop: true,
-            showCursor: false
+            smartBackspace: true
         });
 
         var typed2 = new Typed('#element-2', {
             strings: ['Programming', 'Gaming', 'Web Development', 'Solving Problems'],
-            typeSpeed: 100,
-            backSpeed: 60,
+            typeSpeed: 60,
+            backSpeed: 40,
+            backDelay: 1500,
             loop: true,
-            showCursor: false
+            smartBackspace: true
         });
 
-        document.getElementById('downloadButton').addEventListener('click', function () {
-            const link = document.createElement('a');
-            link.href = 'SHORT NOTES OF C.pdf'; // Ensure this file path is correct
-            link.download = 'AtulResume.pdf';
-            link.click();
-        });
     </script>
     <script>
         // Cursed Clock JavaScript
