@@ -4,43 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Atul Agrawal's Dynamic Portfolio</title>
     <style>
-        /* Existing canvas style remains */
         canvas {
             display: block;
             margin: auto;
             color: #000;
         }
 
-        /*
-================================
-1. Root Variables & Global Styles
-================================
-*/
         :root {
             --primary-color: #00bcd4;
-            /* A cool cyan for accents/glow */
             --secondary-color: #9c27b0;
-            /* A vibrant purple for secondary accents */
-            --background-dark: #121212;
-            /* Deep dark background */
+            --background-dark: #0a0a0a;
             --text-light: #f5f5f5;
-            /* Light text */
-            --card-bg: #1e1e1e;
-            /* Slightly lighter dark for cards */
+            --card-bg: #121212;
         }
 
         * {
@@ -48,21 +35,35 @@
             padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
-            /* Smooth transitions for all elements for better animation */
-            transition: all 0.3s ease-in-out;
         }
 
         body {
             background-color: var(--background-dark);
             color: var(--text-light);
             font-family: 'Poppins', sans-serif;
-            /* Subtle background animation */
-            background-image: radial-gradient(circle at top left, rgba(0, 188, 212, 0.05), transparent 50%),
-                radial-gradient(circle at bottom right, rgba(156, 39, 176, 0.05), transparent 50%);
-            background-size: 100% 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 188, 212, 0.08), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(156, 39, 176, 0.08), transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03), transparent 60%);
+            background-attachment: fixed;
+            position: relative;
         }
 
-        /* --- Utility Classes --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, rgba(0, 188, 212, 0.02) 1px, transparent 1px),
+                linear-gradient(rgba(156, 39, 176, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .title h1 {
             font-size: 2.5rem;
             margin-bottom: 40px;
@@ -80,33 +81,42 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: transparent;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(18, 18, 18, 0.92) 100%);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(6, 182, 212, 0.08);
             z-index: 1000;
             transition: all 0.3s ease;
         }
+        
+        #navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.08), transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(156, 39, 176, 0.08), transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
 
         .logo-text {
-            font-size: 1.6rem; /* Slightly more compact for a professional look */
+            font-size: 1.6rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
-            
-            /* Harmonized Gradient matching the background glow */
             background: linear-gradient(to bottom right, #ffffff 30%, #06b6d4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            
-            /* Clean, soft glow instead of harsh neon */
             filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.4));
-            
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
         }
         
-        .logo-text:hover 
+        .logo-text:hover {
             filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.7));
             transform: scale(1.05);
         }
@@ -115,6 +125,8 @@
             list-style: none;
             display: flex;
             gap: 2.5rem;
+            margin: 0;
+            padding: 0;
         }
 
         .nav_list a {
@@ -122,7 +134,24 @@
             color: var(--text-light);
             font-weight: 500;
             position: relative;
-            padding-bottom: 5px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav_list a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(156, 39, 176, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav_list a:hover::before {
+            opacity: 1;
         }
 
         .nav_list a::after {
@@ -130,17 +159,52 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color);
-            left: 0;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            left: 50%;
             bottom: 0;
-            transition: width 0.3s;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
         }
 
         .nav_list a:hover::after {
-            width: 100%;
+            width: 80%;
+        }
+        
+        .nav_list a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+        }
+        
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
         }
 
-        /* --- Buttons --- */
         .btn,
         .contact-btn {
             padding: 10px 25px;
@@ -191,13 +255,6 @@
             box-shadow: 0 0 15px var(--secondary-color);
         }
 
-        /*
-================================
-3. Home Section
-================================
-*/
-
-        /* Centering the Hero Content */
         .home {
             min-height: 100vh;
             display: flex;
@@ -230,7 +287,6 @@
             animation: slideUp 0.8s ease-out;
         }
 
-        /* The Big Title */
         .hero-title {
             font-size: 4rem;
             font-weight: 700;
@@ -238,28 +294,18 @@
             margin-bottom: 10px;
         }
 
-        /* Gradient effect for the Name */
         .gradient-name {
-            /* Uses the same base color as your background for harmony */
             background: linear-gradient(to left,
                     #06b6d4 20%,
-                    /* Base Cyan matching your background */
                     #22d3ee 50%,
-                    /* Brighter Cyan for "lighting" effect */
                     #ffffff 80%
-                    /* Soft white tip for a 'shine' look */
                 );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-
-            /* Subtle glow to make it pop against the dark background */
             text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
-
             font-weight: 800;
-            /* Heavier weight makes gradients look better */
         }
 
-        /* Sub-header (Problem Solver) */
         .typing-container {
             font-size: 2rem;
             color: #e0e0e0;
@@ -267,7 +313,6 @@
             margin-bottom: 30px;
         }
 
-        /* Description Text */
         .hero-description {
             font-size: 1.1rem;
             line-height: 1.8;
@@ -279,14 +324,12 @@
             margin-right: auto;
         }
 
-        /* GitHub Pill Button Style */
         .github-pill-btn {
             background-color: transparent;
             color: #00bcd4;
             border: 1.5px solid #00bcd4;
             padding: 12px 30px;
             border-radius: 8px;
-            /* Slightly rounded as per image */
             font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
@@ -302,7 +345,6 @@
             transform: translateY(-2px);
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 3rem;
@@ -317,16 +359,10 @@
             }
         }
 
-
-        /*
-================================
-4. About Section
-================================
-*/
         .about {
             padding: 100px 5%;
             background-color: var(--card-bg);
-            /* Contrast background */
+            position: relative;
         }
 
         .about-down {
@@ -356,13 +392,9 @@
             line-height: 1.8;
         }
 
-        /*
-================================
-5. Education Section (New)
-================================
-*/
         .education {
             padding: 100px 5%;
+            position: relative;
         }
 
         .timeline {
@@ -400,14 +432,10 @@
             font-size: 0.95rem;
         }
 
-        /*
-================================
-6. Skills Section
-================================
-*/
         .skills {
             padding: 100px 5%;
             background-color: var(--card-bg);
+            position: relative;
         }
 
         .skills-down {
@@ -443,7 +471,7 @@
         }
 
         .skill-bar {
-            background-color: #333;
+            background-color: #1a1a1a;
             height: 15px;
             border-radius: 8px;
             overflow: hidden;
@@ -456,13 +484,10 @@
             background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
             border-radius: 8px;
             width: 0;
-            /* Animation definition for loading effect */
             animation: skillLoad 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
             box-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
-            /* Glow on skill bar */
         }
 
-        /* Specific skill widths and delays (These work without complex JS if you trigger the animation class on load) */
         .c-skill {
             width: 70%;
             animation-delay: 0.1s;
@@ -487,19 +512,11 @@
             0% {
                 width: 0;
             }
-
-            100% {
-                /* The specific skill class sets the final width */
-            }
         }
 
-        /*
-================================
-7. Projects & Certifications
-================================
-*/
         .projects {
             padding: 100px 5%;
+            position: relative;
         }
 
         .project-container,
@@ -513,6 +530,7 @@
 
         .certifications {
             padding: 100px 5%;
+            position: relative;
         }
 
         .project-card,
@@ -522,7 +540,6 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(156, 39, 176, 0.2);
-            /* Hover Animation: Lift and subtle glow */
             transition: all 0.4s ease;
         }
 
@@ -575,14 +592,10 @@
             background-color: #0d0d0d;
         }
 
-        /*
-================================
-8. Contact Section (Updated for Font Awesome)
-================================
-*/
         .contact {
             padding: 100px 5%;
             background-color: var(--card-bg);
+            position: relative;
         }
 
         .contact-down {
@@ -614,7 +627,7 @@
             gap: 10px;
             padding: 20px;
             border-radius: 10px;
-            background-color: #242424;
+            background-color: #1a1a1a;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s, box-shadow 0.3s;
             min-width: 200px;
@@ -625,13 +638,11 @@
             box-shadow: 0 0 15px var(--primary-color);
         }
 
-        /* Styling for the Font Awesome icon in detail cards */
         .contact-details i {
             font-size: 2.2rem;
             width: 40px;
             height: 40px;
             color: var(--primary-color);
-            /* Use primary color for icons */
             text-shadow: 0 0 8px rgba(0, 188, 212, 0.7);
             transition: text-shadow 0.3s;
         }
@@ -688,19 +699,13 @@
         .social-handles .icons i {
             font-size: 24px;
             color: var(--text-light);
-            /* Make the icon white/light */
         }
 
-        /*
-================================
-9. Footer
-================================
-*/
         footer {
             padding: 20px;
             text-align: center;
             font-size: 0.9rem;
-            background-color: #0a0a0a;
+            background-color: #050505;
         }
 
         footer a {
@@ -708,12 +713,60 @@
             text-decoration: none;
         }
 
-        /*
-================================
-10. Media Queries (Responsiveness)
-================================
-*/
         @media (max-width: 900px) {
+            #navbar {
+                padding: 15px 30px;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav_list {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(18, 18, 18, 0.95) 100%);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+                border-left: 1px solid rgba(6, 182, 212, 0.2);
+            }
+            
+            .nav_list::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                background: radial-gradient(circle at 50% 20%, rgba(6, 182, 212, 0.1), transparent 50%),
+                            radial-gradient(circle at 50% 80%, rgba(156, 39, 176, 0.1), transparent 50%);
+                pointer-events: none;
+                z-index: -1;
+            }
+            
+            .nav_list.active {
+                right: 0;
+            }
+            
+            .nav_list a {
+                font-size: 1.2rem;
+                padding: 12px 24px;
+                width: 200px;
+                text-align: center;
+            }
+            
+            .contact-btn {
+                display: none;
+            }
+            
             .home {
                 flex-direction: column;
                 text-align: center;
@@ -728,7 +781,6 @@
 
             .home .right {
                 display: none;
-                /* Hide the decorative graphic on small screens */
             }
 
             .home .buttons {
@@ -752,34 +804,21 @@
             .skills-right {
                 max-width: 100%;
             }
-
-            .nav_list {
-                display: none;
-                /* Simple mobile hide for now, needs a hamburger menu in real use */
-            }
-
-            #navbar {
-                justify-content: center;
-            }
-
-            .contact-btn {
-                display: none;
-            }
         }
 
         @media (max-width: 500px) {
-            .home .name-glow {
-                font-size: 3rem;
+            .hero-title {
+                font-size: 2.5rem;
             }
 
-            .home #element-1 {
-                font-size: 1.5rem;
+            .typing-container {
+                font-size: 1.2rem;
+                font-weight: 600;
             }
 
             .contact-details {
                 flex-direction: column;
                 align-items: stretch;
-                /* Stretch items to full width */
             }
 
             .contact-details>div {
@@ -796,7 +835,7 @@
         </div>
 
         <nav>
-            <ul class="nav_list">
+            <ul class="nav_list" id="navMenu">
                 <li><a href="#Home">Home</a></li>
                 <li><a href="#About">About</a></li>
                 <li><a href="#Education">Education</a></li>
@@ -805,6 +844,12 @@
                 <li><a href="#Certifications">Certifications</a></li>
             </ul>
         </nav>
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
         <a href="#Contact"><button class="contact-btn">Contact Me</button></a>
     </header>
@@ -841,18 +886,18 @@
                     <h6>I'm Atul Agrawal and I love <span id="element-2" style="color: rgb(100, 28, 163);"></span>
                     </h6>
                     <p>Hey There!<br><br>
-                        I’m Atul, a passionate Third-year B.Tech student with a love for coding and web
+                        I'm Atul, a passionate Third-year B.Tech student with a love for coding and web
                         development. I thrive on creating clean, efficient, and user-friendly web applications while
                         continuously learning and exploring new technologies.<br><br>
 
-                        Over the past year, I’ve honed my skills in C++, C, Java, HTML, and CSS, which form the
+                        Over the past year, I've honed my skills in C++, C, Java, HTML, and CSS, which form the
                         foundation of my programming knowledge. I am always eager to take on new challenges and
                         contribute to innovative projects.<br><br>
 
-                        When I’m not coding, you’ll often find me brainstorming creative solutions or diving into the
-                        latest trends in technology. .<br><br>
+                        When I'm not coding, you'll often find me brainstorming creative solutions or diving into the
+                        latest trends in technology.<br><br>
 
-                        Let’s connect and code the future together!
+                        Let's connect and code the future together!
                     </p>
                 </div>
             </div>
@@ -880,7 +925,6 @@
                     <p>Rajendra Pathak Memorial Higher Secondary School | 2020</p>
                     <p>Grade: 94%</p>
                 </div>
-
             </div>
         </div>
     </section>
@@ -942,9 +986,8 @@
 
             <div class="project-card">
                 <h2>My SQL IDE</h2>
-                <p class="project-description">A responsive, modern Editor fro my SQL queries built with HTML, CSS, and
-                    JavaScript
-                    focusing on clean UI/UX and mobile-first design.</p>
+                <p class="project-description">A responsive, modern Editor for my SQL queries built with HTML, CSS, and
+                    JavaScript focusing on clean UI/UX and mobile-first design.</p>
                 <a href="https://github.com/atul913/MySQL-IDE" target="_blank" class="project-link">
                     <i class="fa-brands fa-github"></i> View Code
                 </a>
@@ -957,7 +1000,6 @@
                 <a href="https://github.com/atul913/Space_invader" target="_blank" class="project-link">
                     <i class="fa-brands fa-github"></i> View Code
                 </a>
-
             </div>
         </div>
     </section>
@@ -969,21 +1011,21 @@
         <div class="certifications-container">
             <div class="cert-card">
                 <h3>HTML/CSS Fundamentals</h3>
-                <p>Issued by **Cisco Networking Academy** | Jan 2024</p>
+                <p>Issued by Cisco Networking Academy | Jan 2024</p>
                 <a href="#" target="_blank" class="cert-link">
                     <i class="fa-solid fa-certificate"></i> View Credential
                 </a>
             </div>
             <div class="cert-card">
                 <h3>Java Programming (Intermediate)</h3>
-                <p>Issued by **Great Learning** | Nov 2023</p>
+                <p>Issued by Great Learning | Nov 2023</p>
                 <a href="#" target="_blank" class="cert-link">
                     <i class="fa-solid fa-certificate"></i> View Credential
                 </a>
             </div>
             <div class="cert-card">
                 <h3>DSA in C++</h3>
-                <p>Issued by **GeeksforGeeks** | Sep 2023</p>
+                <p>Issued by GeeksforGeeks | Sep 2023</p>
                 <a href="#" target="_blank" class="cert-link">
                     <i class="fa-solid fa-certificate"></i> View Credential
                 </a>
@@ -1018,7 +1060,7 @@
                     <div>
                         <i class="fa-solid fa-phone"></i>
                         <span>Phone</span>
-                        <a href="tel:+919876543210">+91 9131291691</a>
+                        <a href="tel:+919131291691">+91 9131291691</a>
                     </div>
                 </div>
 
@@ -1050,13 +1092,37 @@
     </section>
 
     <footer>
-        <span id="credit">Created By <a href="https://github.com/atul913">Atul Agrawal</a> | <span>&#169</span> 2024 All
-            rights
-            reserved.</span>
+        <span id="credit">Created By <a href="https://github.com/atul913">Atul Agrawal</a> | <span>&#169;</span> 2024 All
+            rights reserved.</span>
     </footer>
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav_list a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+        
         var typed1 = new Typed('#element-1', {
             strings: ['Problem Solver', 'Web Developer', 'Software Engineer', 'Tech Enthusiast'],
             typeSpeed: 60,
@@ -1074,86 +1140,6 @@
             loop: true,
             smartBackspace: true
         });
-
-    </script>
-    <script>
-        // Cursed Clock JavaScript
-        const canvas = document.getElementById("clock");
-        if (canvas) {
-            const ctx = canvas.getContext("2d");
-
-            const PI = Math.PI;
-            const step = (2 * PI) / 60;
-            const hour_step = (2 * PI) / 12;
-
-            let now = new Date();
-            let sec = now.getSeconds();
-            let min = now.getMinutes();
-            let hour = now.getHours();
-            if (hour > 12) hour -= 12;
-
-            let sec_angle = -PI / 2 + sec * step;
-            let min_angle = -PI / 2 + min * step;
-            let hour_angle = -PI / 2 + hour * hour_step;
-
-            function drawClock() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#fff";
-                ctx.strokeStyle = "#00bcd4";
-                ctx.font = "14px 'Montserrat'";
-                ctx.textAlign = "center"; // Center text for cleaner look
-
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                const frameSize = 280;
-
-                // Title
-                ctx.fillText("Cursed Clock", centerX, 20); // Centered title
-
-                // Center dot
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, 5, 0, 2 * PI);
-                ctx.fill();
-
-                // Draw numbers
-                let sec_r = 50, min_r = 80, hour_r = 110; // Adjusted radii for better spacing
-
-                // Update angles based on current time
-                now = new Date();
-                sec = now.getSeconds();
-                min = now.getMinutes();
-                hour = now.getHours();
-                if (hour > 12) hour -= 12;
-
-                sec_angle = -PI / 2 + sec * step;
-                min_angle = -PI / 2 + min * step;
-                hour_angle = -PI / 2 + hour * hour_step + (min / 60) * (hour_step); // Smooth hour hand
-
-                // The "Cursed" logic: Drawing numbers at the current hands' positions
-                // We draw the number for the current time on an ever-increasing radius circle 
-
-                // Draw Seconds
-                let sec_x = centerX + sec_r * Math.cos(sec_angle);
-                let sec_y = centerY + sec_r * Math.sin(sec_angle);
-                ctx.fillStyle = "var(--primary-color)";
-                ctx.fillText(sec.toString().padStart(2, '0'), sec_x, sec_y);
-
-                // Draw Minutes
-                let min_x = centerX + min_r * Math.cos(min_angle);
-                let min_y = centerY + min_r * Math.sin(min_angle);
-                ctx.fillStyle = "var(--secondary-color)";
-                ctx.fillText(min.toString().padStart(2, '0'), min_x, min_y);
-
-                // Draw Hours
-                let hour_x = centerX + hour_r * Math.cos(hour_angle);
-                let hour_y = centerY + hour_r * Math.sin(hour_angle);
-                ctx.fillStyle = "var(--text-light)";
-                ctx.fillText(hour.toString(), hour_x, hour_y);
-            }
-
-            setInterval(drawClock, 1000);
-            drawClock();
-        }
     </script>
 </body>
 
