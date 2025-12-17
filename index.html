@@ -519,8 +519,7 @@
             position: relative;
         }
 
-        .project-container,
-        .certifications-container {
+        .project-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
@@ -528,13 +527,7 @@
             text-align: center;
         }
 
-        .certifications {
-            padding: 100px 5%;
-            position: relative;
-        }
-
-        .project-card,
-        .cert-card {
+        .project-card {
             background-color: var(--card-bg);
             padding: 25px;
             border-radius: 10px;
@@ -543,15 +536,13 @@
             transition: all 0.4s ease;
         }
 
-        .project-card:hover,
-        .cert-card:hover {
+        .project-card:hover{
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(0, 188, 212, 0.5);
             border: 1px solid var(--primary-color);
         }
 
-        .project-card h2,
-        .cert-card h3 {
+        .project-card h2{
             color: var(--primary-color);
             margin-bottom: 10px;
         }
@@ -562,8 +553,7 @@
             color: #bbb;
         }
 
-        .project-link,
-        .cert-link {
+        .project-link{
             display: inline-block;
             margin: 15px 10px 0 0;
             padding: 8px 15px;
@@ -574,15 +564,13 @@
             transition: background-color 0.3s, box-shadow 0.3s;
         }
 
-        .project-link:hover,
-        .cert-link:hover {
+        .project-link:hover {
             background-color: var(--primary-color);
             box-shadow: 0 0 10px var(--primary-color);
             color: var(--background-dark);
         }
 
-        .project-link i,
-        .cert-link i {
+        .project-link i,{
             margin-right: 8px;
         }
 
@@ -999,35 +987,6 @@
                 </p>
                 <a href="https://github.com/atul913/Space_invader" target="_blank" class="project-link">
                     <i class="fa-brands fa-github"></i> View Code
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="certifications" id="Certifications">
-        <div class="title">
-            <h1>Certifications</h1>
-        </div>
-        <div class="certifications-container">
-            <div class="cert-card">
-                <h3>HTML/CSS Fundamentals</h3>
-                <p>Issued by Cisco Networking Academy | Jan 2024</p>
-                <a href="#" target="_blank" class="cert-link">
-                    <i class="fa-solid fa-certificate"></i> View Credential
-                </a>
-            </div>
-            <div class="cert-card">
-                <h3>Java Programming (Intermediate)</h3>
-                <p>Issued by Great Learning | Nov 2023</p>
-                <a href="#" target="_blank" class="cert-link">
-                    <i class="fa-solid fa-certificate"></i> View Credential
-                </a>
-            </div>
-            <div class="cert-card">
-                <h3>DSA in C++</h3>
-                <p>Issued by GeeksforGeeks | Sep 2023</p>
-                <a href="#" target="_blank" class="cert-link">
-                    <i class="fa-solid fa-certificate"></i> View Credential
                 </a>
             </div>
         </div>
